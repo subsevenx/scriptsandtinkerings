@@ -1,6 +1,6 @@
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
+#-------------------------------------------------------------
+# Init settings
+#-------------------------------------------------------------
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -23,51 +23,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# Set colorful PS1
-# dircolors --print-database uses its own built-in database
-
-safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
-match_lhs=""
-[[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
-[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-[[ -z ${match_lhs}    ]] \
-        && type -P dircolors >/dev/null \
-        && match_lhs=$(dircolors --print-database)
-[[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
-
-if ${use_color} ; then
-        # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-        if type -P dircolors >/dev/null ; then
-                if [[ -f ~/.dir_colors ]] ; then
-                        eval $(dircolors -b ~/.dir_colors)
-                elif [[ -f /etc/DIR_COLORS ]] ; then
-                        eval $(dircolors -b /etc/DIR_COLORS)
-		else
-			eval $(dircolors)
-                fi
-        fi
-
-        if [[ ${EUID} == 0 ]] ; then
-                PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-        else
-                PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
-        fi
-
-        alias ls='ls --color=auto'
-        alias grep='grep --colour=auto'
-else
-        if [[ ${EUID} == 0 ]] ; then
-                # show root@ when we don't have colors
-                PS1='\u@\h \W \$ '
-        else
-                PS1='\u@\h \w \$ '
-        fi
-fi
-
-# Try to keep environment pollution down.
-unset use_color safe_term match_lhs
-
 #-------------------------------------------------------------
 # Some settings
 #-------------------------------------------------------------
@@ -76,33 +31,52 @@ ulimit -S -c 0      # Don't want coredumps.
 set -o notify
 set -o noclobber
 set -o ignoreeof
-
-
+alias ls='ls --color=auto'
 
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
 
-# Personal
+# Custom Utilities
+alias say='echo "$1" | espeak -s 120 2>/dev/null' #This is just a little fun thing for me use. It's creepy as fuck, though.
+
+# Lazy and Personal
 alias please='sudo $(history -p !!)'
-alias ll='ls -al'
-alias zd='cd'
+alias ll='ls -la'
+alias cs='cd'
 alias xs='cd'
 alias vf='cd'
-alias say='echo "$1" | espeak -s 120 2>/dev/null' #This is just a little fun thing for me use.
-#set -o nounset     # These  two options are useful for debugging.
-#set -o xtrace
+
+# Software Shortcuts
+alias be='bundle exec'
 alias debug="set -o nounset; set -o xtrace"
+alias r='sudo -i R'
+alias exe='exec $SHELL' # Restart the shell
 
+# Git Shortcuts
+alias gs='git status'
+alias gp='git push'
+alias gpm='git pull origin master'
+alias gpo="git pull origin"
+alias gc='git checkout'
+alias gcm='git checkout -m'
+alias gg='git commit -S -m'
 
 #-------------------------------------------------------------
-# Fun Stuff: Greeting, motd etc. ...
+# Fun Stuff: Greeting, motd
+# PS1 Settings
 #-------------------------------------------------------------
 
-date
-fortune | cowsay -f tux | lolcat -a  -s 100 -F 0.5  -d 5 # Requires fortune, cowsay, and lolcat.
+# I suck at the {PS1} stuff so just pretend it makes sense
+PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput bold)\]\[\033[38;5;32m\]@\[$(tput bold)\]\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;32m\]\t\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;32m\][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;32m\]]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]> \[$(tput sgr0)\]"
+#fortune | cowsay -f tux | lolcat -a  -s 100 -F 0.5  -d 5 # Requires fortune, cowsay, and lolcat. Commented out because an update broke my Ruby config.
+fortune | cowsay -f tux
 
 # Local Variables:
 # mode:shell-script
 # sh-shell:bash
 # End:
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export GPG_TTY=$(tty)
