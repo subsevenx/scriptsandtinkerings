@@ -37,9 +37,6 @@ alias ls='ls --color=auto'
 # Aliases
 #-------------------------------------------------------------
 
-# Custom Utilities
-alias say='echo "$1" | espeak -s 120 2>/dev/null' #This is just a little fun thing for me use. It's creepy as fuck, though.
-
 # Lazy and Personal
 alias please='sudo $(history -p !!)'
 alias ll='ls -la'
