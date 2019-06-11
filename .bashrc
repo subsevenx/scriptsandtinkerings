@@ -39,7 +39,7 @@ alias ls='ls --color=auto'
 
 # Lazy and Personal
 alias please='sudo $(history -p !!)'
-alias ll='ls -la'
+alias ll='ls -alF'
 alias cs='cd'
 alias xs='cd'
 alias vf='cd'
