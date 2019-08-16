@@ -1,16 +1,29 @@
 #-------------------------------------------------------------
-# Init settings
+# Init settings: These aren't mine. I adapted most 
+# from the old Linux Mint ones and Ubuntu Budgie init .bashrc
 #-------------------------------------------------------------
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
-use_color=false
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -23,8 +36,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 #-------------------------------------------------------------
-# Some settings
+# Some settings: I wrote most of the ones below
 #-------------------------------------------------------------
 
 ulimit -S -c 0      # Don't want coredumps.
@@ -32,6 +54,7 @@ set -o notify
 set -o noclobber
 set -o ignoreeof
 alias ls='ls --color=auto'
+alias ll='ls -alF'
 
 #-------------------------------------------------------------
 # Aliases
@@ -43,8 +66,7 @@ alias ll='ls -alF'
 alias cs='cd'
 alias xs='cd'
 alias vf='cd'
-alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/
-
+alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
 # Software Shortcuts
 alias be='bundle exec'
 alias debug="set -o nounset; set -o xtrace"
@@ -53,8 +75,6 @@ alias exe='exec $SHELL' # Restart the shell
 alias serv='php -S localhost:8000'  
 alias dl='youtube-dl --extract-audio --audio-format mp3' 
 alias get='wget -r -np -R "index.html*"'
-
-
 # Git Shortcuts
 alias gs='git status'
 alias gp='git push'
@@ -63,12 +83,9 @@ alias gpo='git pull origin'
 alias gc='git checkout'
 alias gcm='git checkout -m'
 alias gg='git commit -S -m'
-
 #-------------------------------------------------------------
 # Fun Stuff: Greeting, motd
 # PS1 Settings
 #-------------------------------------------------------------
-
 # I suck at the {PS1} stuff so just pretend it makes sense
 PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput bold)\]\[\033[38;5;32m\]@\[$(tput bold)\]\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;32m\]\t\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;32m\][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;32m\]]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]> \[$(tput sgr0)\]"
-
