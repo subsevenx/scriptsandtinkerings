@@ -67,14 +67,16 @@ alias cs='cd'
 alias xs='cd'
 alias vf='cd'
 alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
+
 # Software Shortcuts
 alias be='bundle exec'
 alias debug="set -o nounset; set -o xtrace"
 alias r='sudo -i R'
 alias exe='exec $SHELL' # Restart the shell
 alias serv='php -S localhost:8000'  
-alias dl='youtube-dl --extract-audio --audio-format mp3' 
+alias ytb='youtube-dl -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
 alias get='wget -r -np -R "index.html*"'
+
 # Git Shortcuts
 alias gs='git status'
 alias gp='git push'
@@ -83,6 +85,7 @@ alias gpo='git pull origin'
 alias gc='git checkout'
 alias gcm='git checkout -m'
 alias gg='git commit -S -m'
+
 #-------------------------------------------------------------
 # Fun Stuff: Greeting, motd
 # PS1 Settings
