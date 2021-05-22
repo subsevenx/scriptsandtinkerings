@@ -72,7 +72,8 @@ alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
 alias be='bundle exec'
 alias debug="set -o nounset; set -o xtrace"
 alias r='sudo -i R'
-alias exe='exec $SHELL' # Restart the shell
+alias exec='exec $SHELL' # Restart the shell
+alias exe='source ~/.bashrc'
 alias serv='php -S localhost:8000'  
 alias ytb='youtube-dl -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
 alias get='wget -r -np -R "index.html*"'
