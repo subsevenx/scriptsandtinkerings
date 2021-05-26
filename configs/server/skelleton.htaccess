@@ -1,11 +1,11 @@
 <VirtualHost *:80>
-        ServerAdmin
-        ServerName:
-        ServerAlias
-        DocumentRoot /var/www/
+        ServerAdmin mail@example.com
+        ServerName example.com
+        ServerAlias www.example.com
+        DocumentRoot /var/www/example.com/
 
-        <Directory /var/www/html/>
-            Options Indexes FollowSymLinks
+        <Directory /var/www/example.com/>
+            Options -Indexes
             AllowOverride All
             Require all granted
         </Directory>
@@ -16,7 +16,4 @@
         <IfModule mod_dir.c>
             DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm
         </IfModule>
-
 </VirtualHost>
-
-
