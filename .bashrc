@@ -71,14 +71,10 @@ alias xs='cd'
 alias vf='cd'
 alias xd='cd'
 
-# Per System
-alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
-
 # Software Shortcuts
 alias be='bundle exec'
 alias debug="set -o nounset; set -o xtrace"
 alias r='sudo -i R'
-alias exec='exec $SHELL' # Restart the shell
 alias exe='source ~/.bashrc'
 alias serv='php -S localhost:8000'  
 alias ytb='youtube-dl -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
@@ -92,6 +88,12 @@ alias gpo='git pull origin'
 alias gc='git checkout'
 alias gcm='git checkout -m'
 alias gg='git commit -S -m'
+
+# System Specific Shortcuts: Server, Desktop. Uncomment as nessesary.
+## alias perms="sudo curl -L -o 'perms.sh' https://raw.githubusercontent.com/subsevenx/dotfiles/master/configs/server/wp_fixperms.sh && sudo bash perms.sh"
+## alias perms="sudo curl -L -o 'perms.sh' https://raw.githubusercontent.com/subsevenx/dotfiles/master/configs/server/wp_fixperms.sh && sudo bash perms.sh"
+## alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
+## alias home='cd /mnt/c/Users/$USER/' #Windows
 
 #-------------------------------------------------------------
 # Fun Stuff: Greeting, motd
