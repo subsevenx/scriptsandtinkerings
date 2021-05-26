@@ -66,6 +66,12 @@ alias ll='ls -alF'
 alias cs='cd'
 alias xs='cd'
 alias vf='cd'
+alias zd='cd'
+alias xs='cd'
+alias vf='cd'
+alias xd='cd'
+
+# Per System
 alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
 
 # Software Shortcuts
@@ -93,3 +99,7 @@ alias gg='git commit -S -m'
 #-------------------------------------------------------------
 # I suck at the {PS1} stuff so just pretend it makes sense
 PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput bold)\]\[\033[38;5;32m\]@\[$(tput bold)\]\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;32m\]\t\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;32m\][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;32m\]]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]> \[$(tput sgr0)\]"
+alias say='echo "$1" | espeak -s 120 2>/dev/null' #This is just a little fun thing for me use.
+
+date
+fortune | cowsay -f tux | lolcat -a  -s 100 -F 0.5  -d 5 # Requires fortune, cowsay, and lolcat.
