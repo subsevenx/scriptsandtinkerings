@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -e
+clear
 WP_OWNER=www-data # <-- wordpress owner
 WP_GROUP=www-data # <-- wordpress group
 WP_ROOT=$1 # <-- wordpress root directory
@@ -17,3 +18,9 @@ chmod 660 ${WP_ROOT}/wp-config.php
 find ${WP_ROOT}/wp-content -exec chgrp ${WS_GROUP} {} \;
 find ${WP_ROOT}/wp-content -type d -exec chmod 775 {} \;
 find ${WP_ROOT}/wp-content -type f -exec chmod 664 {} \;
+
+
+sudo rm perms.sh
+echo "========================="
+echo "Wordpress permissions fixed."
+echo "========================="
