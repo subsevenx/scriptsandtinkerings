@@ -90,8 +90,8 @@ alias gcm='git checkout -m'
 alias gg='git commit -S -m'
 
 # System Specific Shortcuts: Server, Desktop. Uncomment as nessesary.
-## alias perms="sudo curl -L -o 'perms.sh' https://raw.githubusercontent.com/subsevenx/dotfiles/master/configs/server/wp_fixperms.sh && sudo bash perms.sh"
-## alias perms="sudo curl -L -o 'perms.sh' https://raw.githubusercontent.com/subsevenx/dotfiles/master/configs/server/wp_fixperms.sh && sudo bash perms.sh"
+## alias perms="sudo curl -L -o 'perms.sh' https://raw.githubusercontent.com/subsevenx/scriptsandtinkerings/master/configs/server/wp_fixperms.sh && sudo bash perms.sh"
+## alias wpinstall="sudo curl -L -o 'wp.sh' https://raw.githubusercontent.com/subsevenx/scriptsandtinkerings/master/configs/server/wp_install.sh && sudo bash wp.sh"
 ## alias hdd='sudo mount -t drvfs E: /mnt/e && cd /mnt/e/'
 ## alias home='cd /mnt/c/Users/$USER/' #Windows
 
