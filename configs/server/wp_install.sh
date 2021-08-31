@@ -52,6 +52,8 @@ chmod 775 wp-content/uploads
 echo "Cleaning..."
 #remove zip file
 rm latest.tar.gz
+#remove wordpress readme
+rm readme.html
 #remove bash script
 rm wp.sh
 echo "========================="
