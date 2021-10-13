@@ -73,6 +73,7 @@ alias xd='cd'
 
 # Software Shortcuts
 alias be='bundle exec'
+alias jserve='jekyll serve --livereload'
 alias debug="set -o nounset; set -o xtrace"
 alias r='sudo -i R'
 alias exe='source ~/.bashrc'
