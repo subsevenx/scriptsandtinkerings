@@ -18,6 +18,7 @@ alias xd='cd'
 alias be='bundle exec'
 alias jserve='jekyll serve --livereload'
 alias jserver='bundle exec jekyll serve --force_polling --livereload'
+alias eserv='npx @11ty/eleventy --serve'
 alias debug="set -o nounset; set -o xtrace"
 alias r='sudo -i R'
 alias exe='source ~/.bashrc'
