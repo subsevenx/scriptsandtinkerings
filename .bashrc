@@ -60,8 +60,9 @@ alias ll='ls -alF'
 # Fun Stuff: Greeting, motd
 # PS1 Settings
 #-------------------------------------------------------------
-# I suck at the {PS1} stuff so just pretend it makes sense
-PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput bold)\]\[\033[38;5;32m\]@\[$(tput bold)\]\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;32m\]\t\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;32m\][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;32m\]]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]> \[$(tput sgr0)\]"
+# Legacy PS1 2014-2022
+#PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput bold)\]\[\033[38;5;32m\]@\[$(tput bold)\]\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;32m\]\t\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;32m\][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;32m\]]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput bold)\]> \[$(tput sgr0)\]"
+PS1="\[$(tput bold)\]\[\033[38;5;135m\]\h\[$(tput sgr0)\]@\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;32m\]\u\[$(tput sgr0)\] \t : \d\n[\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;40m\]\w\[$(tput sgr0)\]] > \[$(tput sgr0)\]"
 alias say='echo "$1" | espeak -s 120 2>/dev/null' #This is just a little fun thing for me use.
 
 date
