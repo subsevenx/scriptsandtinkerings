@@ -25,6 +25,7 @@ alias exe='source ~/.bashrc'
 alias serv='php -S localhost:8000'
 alias ytb='yt-dlp -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
 alias get='wget -r -np -R "index.html*"'
+alias ruby-latest='rbenv install $(rbenv install -l | grep -v - | tail -1)'
 
 # Git Shortcuts
 alias gs='git status'
