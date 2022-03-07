@@ -10,3 +10,7 @@ export NVM_DIR="$HOME/.nvm"
 #depends phpenv
 export PATH="$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
+
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
