@@ -12,10 +12,11 @@ alias zd='cd'
 alias xs='cd'
 alias vf='cd'
 alias xd='cd'
+alias ls='ls --color=auto'
 
 # Software Shortcuts
 alias debug="set -o nounset; set -o xtrace"
-alias exe='source ~/.bashrc'
+alias exe='source ~/.zshrc'
 alias phpserve='php -S localhost:8000'
 alias ytb='yt-dlp -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
 alias getindex='wget -r -np -R "index.html*"'
