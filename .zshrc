@@ -1,7 +1,9 @@
 # Set the prompt
 autoload -U colors && colors
-export PS1="%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[white]%}%{$reset_color}%{$fg_bold[magenta]%}%m %{$reset_color%}%* : %D{%a %b %d}
+export PS1="%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[white]%}%{$reset_color}%{$fg_bold[magenta]%}%m %{$reset_color%}%* : %D{%a %b %d}
 %{$reset_color%}[%{$fg_bold[green]%}%~%{$reset_color%}] > %{$reset_color%}"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
+
 
 #### PATH EXPORTS ####
 
@@ -22,7 +24,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 ## Required only when running locally.
-# export PATH="$HOME/.brew/bin:$HOME/.brew/sbin:$PATH"
+export PATH="$HOME/.brew/bin:$HOME/.brew/sbin:$PATH"
 
 ## Load aliases
 source ~/.zsh_aliases
