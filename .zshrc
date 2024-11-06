@@ -6,7 +6,8 @@ precmd() {
   print -rP "%F{green}%B[%~]%b%f"
 }
 
-export PROMPT='%F{magenta}%* %D{%a %b %d}%f %B>%b '
+zstyle ':vcs_info:git:*' formats '%b'
+export PROMPT='%F{magenta}%* %D{%a %b %d}%f %B%b%F{red}${vcs_info_msg_0_}%f >'
 
 #### PATH EXPORTS ####
 
