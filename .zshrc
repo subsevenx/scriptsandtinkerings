@@ -1,5 +1,5 @@
 # Set the prompt
-autoload -Uz vcs_info
+autoload -Uz vcs_info add-zsh-hook
 add-zsh-hook precmd vcs_info
 
 precmd() {
@@ -7,7 +7,7 @@ precmd() {
 }
 
 zstyle ':vcs_info:git:*' formats '%b'
-export PROMPT='%F{magenta}%* %D{%a %b %d}%f %B%b%F{red}${vcs_info_msg_0_}%f >'
+export PROMPT='%F{magenta}%* %D{%a %b %d}%f %B%b> '
 
 #### PATH EXPORTS ####
 
