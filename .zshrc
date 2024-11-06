@@ -1,11 +1,12 @@
 # Set the prompt
 autoload -Uz vcs_info
-precmd() { vcs_info }
+add-zsh-hook precmd vcs_info
 
-zstyle ':vcs_info:git:*' formats '%b '
+precmd() {
+  print -rP "%F{green}%B[%~]%b%f"
+}
 
-setopt PROMPT_SUBST
-PROMPT='%F{green}%B[%~]%b%f %F{magenta}%*%f %B>%b '
+export PROMPT='%F{magenta}%* %D{%a %b %d}%f %B>%b '
 
 #### PATH EXPORTS ####
 
