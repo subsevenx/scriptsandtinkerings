@@ -20,9 +20,10 @@ alias breload='source ~/.bashrc'
 alias exe='exec "$SHELL" -l'
 alias hidden='ls -d .[!.]*'
 
-# Run Servers
+# Dev Utilities
 alias php-serve='php -S localhost:8000'
 alias bridgetown-serve='bin/bridgetown start'
+alias pystart='[ -d .env ] || python -m venv .env; source .env/bin/activate'
 
 # Software Utilities
 alias sample-song='yt-dlp -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
