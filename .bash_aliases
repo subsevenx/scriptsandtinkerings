@@ -1,3 +1,5 @@
+REQUIRED_PACKAGES=("fortune" "cowsay" "lolcat")
+
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
@@ -23,12 +25,16 @@ alias hidden='ls -d .[!.]*'
 # Dev Utilities
 alias php-serve='php -S localhost:8000'
 alias bridgetown-serve='bin/bridgetown start'
-alias pystart='[ -d .env ] || python -m venv .env; source .env/bin/activate'
+alias py-env='[ -d .env ] || python -m venv .venv; source .venv/bin/activate'
 
 # Software Utilities
 alias sample-song='yt-dlp -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata --verbose' 
 alias get-index='wget -r -np -R "index.html*"'
 
+
+#-------------------------------------------------------------
+# Dev Env Updaters
+#-------------------------------------------------------------
 # Updater Utilities
 rubylatest() {
 	latest=$(rbenv install -l | awk '/^[0-9]/{v=$1} END{print v}')
@@ -93,6 +99,49 @@ nodelatest() {
 
 alias node-latest='nodelatest'
 
-# System Specific Shortcuts: Server, Desktop. Uncomment as nessesary.
-## alias perms="sudo curl -L -o 'perms.sh' https://raw.githubusercontent.com/subsevenx/scriptsandtinkerings/master/configs/server/wp_fixperms.sh && sudo bash perms.sh"
-## alias wpinstall="sudo curl -L -o 'wp.sh' https://raw.githubusercontent.com/subsevenx/scriptsandtinkerings/master/configs/server/wp_install.sh && sudo bash wp.sh"
+#-------------------------------------------------------------
+# Helper Functions
+#-------------------------------------------------------------
+
+# Detect package manager
+detect_pkg_manager() {
+    if command -v apt-get &>/dev/null; then
+        echo "apt-get"
+    elif command -v dnf &>/dev/null; then
+        echo "dnf"
+    elif command -v yum &>/dev/null; then
+        echo "yum"
+    elif command -v pacman &>/dev/null; then
+        echo "pacman"
+    elif command -v zypper &>/dev/null; then
+        echo "zypper"
+    else
+        echo "unknown"
+    fi
+}
+
+# Install package
+install_pkg() {
+    local pkg="$1"
+    case "$PKG_MANAGER" in
+        apt-get) sudo apt-get install -y "$pkg" ;;
+        dnf) sudo dnf install -y "$pkg" ;;
+        yum) sudo yum install -y "$pkg" ;;
+        pacman) sudo pacman -S --noconfirm "$pkg" ;;
+        zypper) sudo zypper install -y "$pkg" ;;
+        *) echo "Install $pkg manually." ;;
+    esac
+}
+
+PKG_MANAGER=$(detect_pkg_manager)
+
+for cmd in "${REQUIRED_PACKAGES[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "$cmd not found. Installing..."
+        install_pkg "$cmd"
+    fi
+done
+
+gen_seed() {
+    date +%s%N | cut -b10-19
+}
