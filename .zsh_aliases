@@ -1,3 +1,5 @@
+REQUIRED_PACKAGES=("fortune" "cowsay" "lolcat")
+
 #-------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------
@@ -38,7 +40,7 @@ rubylatest() {
 	latest=$(rbenv install -l | awk '/^[0-9]/{v=$1} END{print v}')
 	echo "You are using Ruby $(ruby -v)"
 	echo "Latest Ruby version: $latest"
-	read -p "Install Ruby $latest? [y/N] " confirm
+	read "?Install Ruby $latest? [y/N] " confirm
 	
 	if [[ $confirm == [yY] ]]; then
 	rbenv install -s "$latest"
